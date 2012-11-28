@@ -29,7 +29,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NetMetrixReporter.offerID = @"local";
+    [super viewDidAppear:animated];
     [NetMetrixReporter report];
 }
 
