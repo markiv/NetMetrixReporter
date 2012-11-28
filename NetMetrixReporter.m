@@ -8,11 +8,6 @@
 
 #import "NetMetrixReporter.h"
 
-// Die Struktur des Skripts wird wie folgt aussehen:
-// [angebotskennung].wemfbox.ch/cgi-bin/ivw/CP/apps/[appname]/[plattform]/[device]
-// See: http://www.net-metrix.ch/produkte/net-metrix-audit/technisches/skript-generator?angebot=netmx&kontingent=apps/newsapp/iphone&tag=audit&submit=Skript+erstellen
-
-
 @implementation NetMetrixReporter
 
 static NSString *offerID;
@@ -35,16 +30,21 @@ static NSURL    *baseURL;
     [self rebuildBaseURL];
 }
 
+
 // Rebuilds the NetMetrix URL
 // E.g. http://iphonso.wemfbox.ch/cgi-bin/ivw/CP/apps/NetMetrixTest/ios/universal/phone
+// See: http://www.net-metrix.ch/produkte/net-metrix-audit/technisches/skript-generator?angebot=netmx&kontingent=apps/newsapp/iphone&tag=audit&submit=Skript+erstellen
+// Die Struktur des Skripts wird wie folgt aussehen:
+// [angebotskennung].wemfbox.ch/cgi-bin/ivw/CP/apps/[appname]/[plattform]/[device]
+
 + (void)rebuildBaseURL
 {
     baseURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@.wemfbox.ch/cgi-bin/ivw/CP/apps/%@/ios/%@", offerID, appID, device]];
 }
 
+// Introspects the current device and app bundle in order to set up reasonable defaults
 + (void)initialize
 {
-    // Introspect the app and the current device
     device = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"tablet" : @"phone";
     
     NSBundle *bundle = [NSBundle mainBundle];
@@ -54,7 +54,7 @@ static NSURL    *baseURL;
         device = [@"universal/" stringByAppendingString:device];
     }
     
-    // By default, use the bundle ID to guess the required NetMetrix "offer ID" and app name
+    // By default, use the bundle ID to guess the required Net-Metrix "offer ID" and app name
     // E.g. for the bundle ID "com.iphonso.NetMetrixTest", offerID will be "iphonso"
     // and appID will be "NetMetrixTest" (they can be overridden afterwards).
     NSString *bundleID = [bundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
@@ -64,6 +64,7 @@ static NSURL    *baseURL;
     [self rebuildBaseURL];
 }
 
+// Fetches the fantastic 1-pixel GIF, thereby reporting a "page view" to Net-Metrix
 + (void)report
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
