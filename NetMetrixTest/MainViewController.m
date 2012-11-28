@@ -7,9 +7,10 @@
 //
 
 #import "MainViewController.h"
+#import "NetMetrixReporter.h"
+
 
 @interface MainViewController ()
-
 @end
 
 @implementation MainViewController
@@ -25,6 +26,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NetMetrixReporter.offerID = @"local";
+    [NetMetrixReporter report];
+}
+
 
 #pragma mark - Flipside View Controller
 

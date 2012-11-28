@@ -20,6 +20,7 @@
 		AC9949BF16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9949BD16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard */; };
 		AC9949C216665DDF00B1EDBA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949C116665DDF00B1EDBA /* MainViewController.m */; };
 		AC9949C516665DDF00B1EDBA /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949C416665DDF00B1EDBA /* FlipsideViewController.m */; };
+		AC9949CD16665E1E00B1EDBA /* NetMetrixReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949CC16665E1E00B1EDBA /* NetMetrixReporter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		AC9949C116665DDF00B1EDBA /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		AC9949C316665DDF00B1EDBA /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
 		AC9949C416665DDF00B1EDBA /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		AC9949CB16665E1E00B1EDBA /* NetMetrixReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetMetrixReporter.h; sourceTree = "<group>"; };
+		AC9949CC16665E1E00B1EDBA /* NetMetrixReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetMetrixReporter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		AC99499316665DDF00B1EDBA = {
 			isa = PBXGroup;
 			children = (
+				AC9949CB16665E1E00B1EDBA /* NetMetrixReporter.h */,
+				AC9949CC16665E1E00B1EDBA /* NetMetrixReporter.m */,
 				AC9949A816665DDF00B1EDBA /* NetMetrixTest */,
 				AC9949A116665DDF00B1EDBA /* Frameworks */,
 				AC99499F16665DDF00B1EDBA /* Products */,
@@ -186,6 +191,7 @@
 				AC9949B316665DDF00B1EDBA /* AppDelegate.m in Sources */,
 				AC9949C216665DDF00B1EDBA /* MainViewController.m in Sources */,
 				AC9949C516665DDF00B1EDBA /* FlipsideViewController.m in Sources */,
+				AC9949CD16665E1E00B1EDBA /* NetMetrixReporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +284,7 @@
 				GCC_PREFIX_HEADER = "NetMetrixTest/NetMetrixTest-Prefix.pch";
 				INFOPLIST_FILE = "NetMetrixTest/NetMetrixTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -289,6 +296,7 @@
 				GCC_PREFIX_HEADER = "NetMetrixTest/NetMetrixTest-Prefix.pch";
 				INFOPLIST_FILE = "NetMetrixTest/NetMetrixTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
