@@ -46,6 +46,7 @@ static NSURL    *baseURL;
 // Introspects the current device and app bundle in order to set up reasonable defaults
 + (void)initialize
 {
+    // What are we running on?
     device = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"tablet" : @"phone";
     
     NSBundle *bundle = [NSBundle mainBundle];
