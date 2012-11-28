@@ -39,7 +39,8 @@ static NSURL    *baseURL;
 
 + (void)rebuildBaseURL
 {
-    baseURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@.wemfbox.ch/cgi-bin/ivw/CP/apps/%@/ios/%@", offerID, appID, device]];
+    baseURL = [NSURL URLWithString:[NSString stringWithFormat:
+        @"http://%@.wemfbox.ch/cgi-bin/ivw/CP/apps/%@/ios/%@", offerID, appID, device]];
 }
 
 // Introspects the current device and app bundle in order to set up reasonable defaults
@@ -71,7 +72,7 @@ static NSURL    *baseURL;
         NSError *error;
         [NSData dataWithContentsOfURL:baseURL options:NSDataReadingUncached error:&error];
         if (error) {
-            NSLog(@"Error reporting to NetMetrix: %@", error);
+            NSLog(@"Error reporting to Net-Metrix: %@", error);
         }
     });
 }
