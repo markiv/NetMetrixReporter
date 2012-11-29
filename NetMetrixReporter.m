@@ -32,12 +32,12 @@ static NSString *userAgent;
 }
 
 
-// Rebuilds the NET-Metrix URL
-// E.g. http://iphonso.wemfbox.ch/cgi-bin/ivw/CP/apps/NetMetrixTest/ios/universal/phone
-// See: http://www.net-metrix.ch/produkte/net-metrix-audit/technisches/skript-generator?angebot=netmx&kontingent=apps/newsapp/iphone&tag=audit&submit=Skript+erstellen
-// Die Struktur des Skripts wird wie folgt aussehen:
-// [angebotskennung].wemfbox.ch/cgi-bin/ivw/CP/apps/[appname]/[plattform]/[device]
-
+/* Rebuilds the NET-Metrix URL
+ * E.g. http://iphonso.wemfbox.ch/cgi-bin/ivw/CP/apps/NetMetrixTest/ios/universal/phone
+ * See: http://www.net-metrix.ch/produkte/net-metrix-audit/technisches/skript-generator?angebot=netmx&kontingent=apps/newsapp/iphone&tag=audit&submit=Skript+erstellen
+ * Die Struktur des Skripts wird wie folgt aussehen:
+ * [angebotskennung].wemfbox.ch/cgi-bin/ivw/CP/apps/[appname]/[plattform]/[device]
+ */
 + (void)rebuildBaseURL
 {
     baseURL = [NSURL URLWithString:[NSString stringWithFormat:
@@ -83,9 +83,10 @@ static NSString *userAgent;
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         // Create a request
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:baseURL cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:10];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:baseURL
+                                        cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:10];
         
-        // Set the required user agent
+        // Set the required custom user agent
         [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
         // Make the connection
