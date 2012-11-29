@@ -49,31 +49,36 @@ static NSString *userAgent;
 {
     // What are we running on?
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        device = @"tablet";
+        device    = @"tablet";
         userAgent = @"Mozilla/5.0 (iOS-tablet; U; CPU iPad OS like Mac OS X)";
     } else {
-        device = @"phone";
+        device    = @"phone";
         userAgent = @"Mozilla/5.0 (iOS-phone; U; CPU iPhone OS like Mac OS X)";
     }
-    
+
     NSBundle *bundle = [NSBundle mainBundle];
+
     // Is this a universal app?
     id deviceFamily = [bundle objectForInfoDictionaryKey:@"UIDeviceFamily"];
-    if ([deviceFamily isKindOfClass:[NSArray class]] && [deviceFamily count] > 1) {
-        device = [@"universal/" stringByAppendingString:device];
+    BOOL isUniversalApp = [deviceFamily isKindOfClass:[NSArray class]] && [deviceFamily count] > 1;
+    if (isUniversalApp) {
+        device    = [@"universal/" stringByAppendingString:device];
+        userAgent = @"Mozilla/5.0 (iOS-universal; U; CPU OS like Mac OS X)";
     }
     
-    // By default, use the bundle ID to guess the required Net-Metrix "offer ID" and app name
-    // E.g. for the bundle ID "com.iphonso.NetMetrixTest", offerID will be "iphonso"
-    // and appID will be "NetMetrixTest" (they can be overridden afterwards).
-    NSString *bundleID = [bundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+    /* By default, use the bundle ID to guess the required Net-Metrix "offer ID" and app name
+     * E.g. for the bundle ID "com.iphonso.NetMetrixTest", offerID will be "iphonso"
+     * and appID will be "NetMetrixTest" (they can be overridden afterwards).
+     */
+    NSString *bundleID     = [bundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
     NSArray *bundleIdParts = [bundleID componentsSeparatedByString:@"."];
     offerID = [bundleIdParts count] > 1 ? bundleIdParts[1] : bundleID;
-    appID = [bundleIdParts lastObject];
+    appID   = [bundleIdParts lastObject];
+    
     [self rebuildBaseURL];
 }
 
-// Fetches the fantastic 1-pixel GIF, thereby reporting a "page view" to Net-Metrix
+// Fetches the famous 1-pixel GIF, thereby reporting a "page view" to NET-Metrix
 + (void)report
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -83,6 +88,7 @@ static NSString *userAgent;
         // Set the required user agent
         [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 
+        // Make the connection
         NSHTTPURLResponse *response;
         NSError *error;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -90,7 +96,8 @@ static NSString *userAgent;
         if (error) {
             NSLog(@"Error reporting to NET-Metrix: %@", error);
         } else {
-            NSLog(@"NET-Metrix response: Status = %i; Headers = %@", response.statusCode, [response allHeaderFields]);
+            NSLog(@"NET-Metrix response: Status = %i; Headers = %@", response.statusCode,
+                  [response allHeaderFields]);
         }
     });
 }
