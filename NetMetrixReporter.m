@@ -14,6 +14,7 @@ static NSString *offerID;
 static NSString *device;
 static NSString *appID;
 static NSURL    *baseURL;
+static NSString *userAgent;
 
 
 // Sets the NetMetrix offer ID (Angebotskennung)
@@ -31,7 +32,7 @@ static NSURL    *baseURL;
 }
 
 
-// Rebuilds the NetMetrix URL
+// Rebuilds the NET-Metrix URL
 // E.g. http://iphonso.wemfbox.ch/cgi-bin/ivw/CP/apps/NetMetrixTest/ios/universal/phone
 // See: http://www.net-metrix.ch/produkte/net-metrix-audit/technisches/skript-generator?angebot=netmx&kontingent=apps/newsapp/iphone&tag=audit&submit=Skript+erstellen
 // Die Struktur des Skripts wird wie folgt aussehen:
@@ -47,7 +48,13 @@ static NSURL    *baseURL;
 + (void)initialize
 {
     // What are we running on?
-    device = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? @"tablet" : @"phone";
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        device = @"tablet";
+        userAgent = @"Mozilla/5.0 (iOS-tablet; U; CPU iPad OS like Mac OS X)";
+    } else {
+        device = @"phone";
+        userAgent = @"Mozilla/5.0 (iOS-phone; U; CPU iPhone OS like Mac OS X)";
+    }
     
     NSBundle *bundle = [NSBundle mainBundle];
     // Is this a universal app?
@@ -70,10 +77,20 @@ static NSURL    *baseURL;
 + (void)report
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        // Create a request
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:baseURL cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:10];
+        
+        // Set the required user agent
+        [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+
+        NSHTTPURLResponse *response;
         NSError *error;
-        [NSData dataWithContentsOfURL:baseURL options:NSDataReadingUncached error:&error];
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
         if (error) {
-            NSLog(@"Error reporting to Net-Metrix: %@", error);
+            NSLog(@"Error reporting to NET-Metrix: %@", error);
+        } else {
+            NSLog(@"NET-Metrix response: Status = %i; Headers = %@", response.statusCode, [response allHeaderFields]);
         }
     });
 }
