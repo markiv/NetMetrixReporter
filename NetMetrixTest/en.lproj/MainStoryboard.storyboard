@@ -141,8 +141,6 @@ https://github.com/markiv/NetMetrixReporter</string>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="tZy-fN-b3j" secondAttribute="centerX" type="user" id="MqZ-y1-SPt"/>
-                            <constraint firstAttribute="trailing" secondItem="tZy-fN-b3j" secondAttribute="trailing" constant="17" type="user" id="PIS-ms-LaD"/>
-                            <constraint firstItem="tZy-fN-b3j" firstAttribute="leading" secondItem="7" secondAttribute="leading" constant="18" type="user" id="ZZm-PD-tvY"/>
                             <constraint firstItem="12" firstAttribute="leading" secondItem="7" secondAttribute="leading" type="default" id="kyL-VC-rMY"/>
                             <constraint firstItem="12" firstAttribute="top" secondItem="7" secondAttribute="top" type="default" id="oQ7-QK-1Ab"/>
                             <constraint firstAttribute="centerY" secondItem="tZy-fN-b3j" secondAttribute="centerY" type="user" id="tX3-Xf-Xlj"/>
