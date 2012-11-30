@@ -44,7 +44,8 @@ static NSString *userAgent;
         @"http://%@.wemfbox.ch/cgi-bin/ivw/CP/apps/%@/ios/%@", offerID, appID, device]];
 }
 
-// Introspects the current device and app bundle in order to set up reasonable defaults
+// Introspects the current device and app bundle in order to set up reasonable defaults.
+// Initializes the receiver before it’s used (before it receives its first message).
 + (void)initialize
 {
     // What are we running on?
@@ -78,8 +79,14 @@ static NSString *userAgent;
     [self rebuildBaseURL];
 }
 
-// Fetches the famous 1-pixel GIF, thereby reporting a "page view" to NET-Metrix
 + (void)report
+{
+    [self reportWithCompletionHandler:nil];
+}
+
+// Returns immediately, fetching the famous 1-pixel GIF asynchronously and thereby reporting a
+// "page view" to NET-Metrix
++ (void)reportWithCompletionHandler:(NetMetrixReporterCompletionHandler)handler
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         // Create a request
@@ -93,6 +100,10 @@ static NSString *userAgent;
         NSHTTPURLResponse *response;
         NSError *error;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+
+        if (handler) {
+            handler(response, error);
+        }
         
         if (error) {
             NSLog(@"Error reporting to NET-Metrix: %@", error);

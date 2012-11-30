@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2E86CC16681C1300108DB0 /* mango.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2E86CA16681C1300108DB0 /* mango.png */; };
+		AC2E86CD16681C1300108DB0 /* mango@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC2E86CB16681C1300108DB0 /* mango@2x.png */; };
 		AC9949A316665DDF00B1EDBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9949A216665DDF00B1EDBA /* UIKit.framework */; };
 		AC9949A516665DDF00B1EDBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9949A416665DDF00B1EDBA /* Foundation.framework */; };
 		AC9949A716665DDF00B1EDBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9949A616665DDF00B1EDBA /* CoreGraphics.framework */; };
@@ -16,14 +18,15 @@
 		AC9949B516665DDF00B1EDBA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9949B416665DDF00B1EDBA /* Default.png */; };
 		AC9949B716665DDF00B1EDBA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9949B616665DDF00B1EDBA /* Default@2x.png */; };
 		AC9949B916665DDF00B1EDBA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9949B816665DDF00B1EDBA /* Default-568h@2x.png */; };
-		AC9949BC16665DDF00B1EDBA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9949BA16665DDF00B1EDBA /* MainStoryboard_iPhone.storyboard */; };
-		AC9949BF16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9949BD16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard */; };
+		AC9949BC16665DDF00B1EDBA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9949BA16665DDF00B1EDBA /* MainStoryboard.storyboard */; };
 		AC9949C216665DDF00B1EDBA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949C116665DDF00B1EDBA /* MainViewController.m */; };
 		AC9949C516665DDF00B1EDBA /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949C416665DDF00B1EDBA /* FlipsideViewController.m */; };
 		AC9949CD16665E1E00B1EDBA /* NetMetrixReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9949CC16665E1E00B1EDBA /* NetMetrixReporter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC2E86CA16681C1300108DB0 /* mango.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mango.png; sourceTree = "<group>"; };
+		AC2E86CB16681C1300108DB0 /* mango@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mango@2x.png"; sourceTree = "<group>"; };
 		AC99499E16665DDF00B1EDBA /* NetMetrixTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetMetrixTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9949A216665DDF00B1EDBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AC9949A416665DDF00B1EDBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,8 +40,7 @@
 		AC9949B416665DDF00B1EDBA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AC9949B616665DDF00B1EDBA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AC9949B816665DDF00B1EDBA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AC9949BB16665DDF00B1EDBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		AC9949BE16665DDF00B1EDBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		AC9949BB16665DDF00B1EDBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AC9949C016665DDF00B1EDBA /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		AC9949C116665DDF00B1EDBA /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		AC9949C316665DDF00B1EDBA /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
@@ -95,8 +97,7 @@
 			children = (
 				AC9949B116665DDF00B1EDBA /* AppDelegate.h */,
 				AC9949B216665DDF00B1EDBA /* AppDelegate.m */,
-				AC9949BA16665DDF00B1EDBA /* MainStoryboard_iPhone.storyboard */,
-				AC9949BD16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard */,
+				AC9949BA16665DDF00B1EDBA /* MainStoryboard.storyboard */,
 				AC9949C016665DDF00B1EDBA /* MainViewController.h */,
 				AC9949C116665DDF00B1EDBA /* MainViewController.m */,
 				AC9949C316665DDF00B1EDBA /* FlipsideViewController.h */,
@@ -116,6 +117,8 @@
 				AC9949B416665DDF00B1EDBA /* Default.png */,
 				AC9949B616665DDF00B1EDBA /* Default@2x.png */,
 				AC9949B816665DDF00B1EDBA /* Default-568h@2x.png */,
+				AC2E86CA16681C1300108DB0 /* mango.png */,
+				AC2E86CB16681C1300108DB0 /* mango@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,8 +178,9 @@
 				AC9949B516665DDF00B1EDBA /* Default.png in Resources */,
 				AC9949B716665DDF00B1EDBA /* Default@2x.png in Resources */,
 				AC9949B916665DDF00B1EDBA /* Default-568h@2x.png in Resources */,
-				AC9949BC16665DDF00B1EDBA /* MainStoryboard_iPhone.storyboard in Resources */,
-				AC9949BF16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard in Resources */,
+				AC9949BC16665DDF00B1EDBA /* MainStoryboard.storyboard in Resources */,
+				AC2E86CC16681C1300108DB0 /* mango.png in Resources */,
+				AC2E86CD16681C1300108DB0 /* mango@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,20 +210,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		AC9949BA16665DDF00B1EDBA /* MainStoryboard_iPhone.storyboard */ = {
+		AC9949BA16665DDF00B1EDBA /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AC9949BB16665DDF00B1EDBA /* en */,
 			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		AC9949BD16665DDF00B1EDBA /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC9949BE16665DDF00B1EDBA /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -320,6 +316,7 @@
 				AC9949CA16665DDF00B1EDBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

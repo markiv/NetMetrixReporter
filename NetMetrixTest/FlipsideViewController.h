@@ -19,5 +19,6 @@
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 
 - (IBAction)done:(id)sender;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

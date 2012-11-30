@@ -18,7 +18,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.log.text = @"";
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.iPhoneInfoButton.hidden = YES;
+    } else {
+        self.iPadInfoButton.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,10 +32,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.mango.alpha = 0.0;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+//    NetMetrixReporter.offerID = @"local";
     [NetMetrixReporter report];
+
+    self.mango.transform = CGAffineTransformMakeScale(0.9, 0.9);
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.mango.transform = CGAffineTransformIdentity;
+        self.mango.alpha = 1.0;
+    } completion:nil];
 }
 
 
@@ -74,4 +92,28 @@
     }
 }
 
+- (IBAction)mangoTapped:(id)sender {
+    [NetMetrixReporter reportWithCompletionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+        NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                            dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
+        NSString *info = @"";
+        if (error) {
+            info = [error localizedDescription];
+            NSString *url = [error.userInfo objectForKey:NSURLErrorFailingURLErrorKey];
+            if (url) {
+                info = [info stringByAppendingFormat:@" (%@)", url];
+            }
+        } else {
+            info = [NSString stringWithFormat:@"Response status %i", response.statusCode];
+            id contentLength = [[response allHeaderFields] objectForKey:@"Content-Length"];
+            if (contentLength) {
+                info = [info stringByAppendingFormat:@" (%@ bytes)", contentLength];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.log.text = [self.log.text stringByAppendingFormat:@"%@: %@\n", time, info];
+            [self.log scrollRectToVisible:CGRectMake(0, self.log.contentSize.height-1, 1, 1) animated:YES];
+        });
+    }];
+}
 @end

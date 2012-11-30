@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^NetMetrixReporterCompletionHandler) (NSHTTPURLResponse *response, NSError *error);
+
 @interface NetMetrixReporter : NSObject
 + (void)setOfferID:(NSString *)anOfferID;
 + (void)setAppID:(NSString *)anAppID;
 + (void)report;
++ (void)reportWithCompletionHandler:(NetMetrixReporterCompletionHandler)handler;
 
 @end

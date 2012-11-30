@@ -23,7 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.navigationBar removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning
