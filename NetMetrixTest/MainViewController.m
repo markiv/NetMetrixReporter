@@ -41,7 +41,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    NetMetrixReporter.offerID = @"local";
     [NetMetrixReporter report];
 
     self.mango.transform = CGAffineTransformMakeScale(0.9, 0.9);

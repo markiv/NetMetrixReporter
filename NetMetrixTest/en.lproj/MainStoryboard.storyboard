@@ -117,7 +117,7 @@
                         <subviews>
                             <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="12">
                                 <items>
-                                    <navigationItem title="About" id="13">
+                                    <navigationItem title="Info" id="13">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="14">
                                             <connections>
                                                 <action selector="done:" destination="6" id="16"/>
@@ -193,6 +193,6 @@ https://github.com/markiv/NetMetrixReporter</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="11"/>
+        <segue reference="Vhe-Db-bBD"/>
     </inferredMetricsTieBreakers>
 </document>
